@@ -8,8 +8,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloWorldController extends AbstractController
 {
-    #[Route('/', name: 'app_helloWorld')]
+    private array $messages = ["Hello", "Hi", "Bye"];
+
+    #[Route('/', name: 'app_hello_world')]
     public function helloWorld(): Response {
         return new Response("Hello World!");
+    }
+
+    #[Route('/messages-to-string', name: 'app_messages_to_string')]
+    public function messagesToString(): Response {
+        return new Response(implode(',', $this->messages));
+    }
+
+    #[Route('/show-one/{id}', name: 'app_show_one')]
+    public function showOne($id): Response {
+        return new Response($this->messages[$id]);
     }
 }
