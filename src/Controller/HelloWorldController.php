@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HelloWorldController extends AbstractController
 {
-    public function helloWord(): Response {
+    public function helloWorld(): Response {
         return new Response("Hello World!");
     }
 }
