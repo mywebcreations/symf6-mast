@@ -22,6 +22,13 @@ class HelloWorldController extends AbstractController
 
     #[Route('/show-one/{id<\d+>}', name: 'app_show_one')]
     public function showOne(int $id): Response {
-        return new Response($this->messages[$id]);
+        return $this->render(
+            'hello-world/show-one.html.twig',
+            array(
+                'message' => $this->messages[$id]
+            )
+        );
+        
+        // return new Response($this->messages[$id]);
     }
 }
