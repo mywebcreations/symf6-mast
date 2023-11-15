@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-app_helloWorld:
-    path: /
-    controller: App\Controller\HelloWorldController::helloWorld
+# app_helloWorld:
+#     path: /
+#     controller: App\Controller\HelloWorldController::helloWorld
