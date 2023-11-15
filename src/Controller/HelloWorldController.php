@@ -20,8 +20,8 @@ class HelloWorldController extends AbstractController
         return new Response(implode(',', $this->messages));
     }
 
-    #[Route('/show-one/{id}', name: 'app_show_one')]
-    public function showOne($id): Response {
+    #[Route('/show-one/{id<\d+>}', name: 'app_show_one')]
+    public function showOne(int $id): Response {
         return new Response($this->messages[$id]);
     }
 }
