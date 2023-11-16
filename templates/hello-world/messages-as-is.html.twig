@@ -6,14 +6,8 @@
 <div>
     {% if message|length > 0 %}
         {% for msg in message|slice(0, limit) %}  {# subsetting array: extracting array from 0 to limit index #}
-            <p>{{ msg.subject }}</p>
-            <p>
-            {% if date(msg.created) < date('-1year') %}
-                Older than one year: {{ msg.subject }}
-            {% else %}
-                {{ msg.created | date('d/m/Y')}}
-            {% endif %}
-            </p>
+            <div>{{ msg.subject }}</div>
+            {% include('hello-world/_message.html.twig') %}
         {% endfor %}
     {% else %}
         <p>No value yet</p>

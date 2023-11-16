@@ -33,7 +33,8 @@ class HelloWorldController extends AbstractController
         return $this->render(
             'hello-world/messages-to-string.html.twig',
             [
-                'message' => implode(',', $this->messages)
+                // 'message' => implode(',', $this->messages)
+                'message' => $this->messages
             ]
         );
              
