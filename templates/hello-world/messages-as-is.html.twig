@@ -5,8 +5,9 @@
 {% block body %}
 <div>
     {% if message|length > 0 %}
-        {% for msg in message|slice(0, limit) %}
-            <p>{{ msg }}</p>
+        {% for msg in message|slice(0, limit) %}  {# subsetting array: extracting array from 0 to limit index #}
+            <div>{{ msg.subject }}</div>
+            {% include('hello-world/_message.html.twig') %}
         {% endfor %}
     {% else %}
         <p>No value yet</p>
