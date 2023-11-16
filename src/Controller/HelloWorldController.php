@@ -8,7 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloWorldController extends AbstractController
 {
-    private array $messages = ["Hello", "Hi", "Bye"];
+    // private array $messages = ["Christy", "Quincy", "Pascal"];
+
+    private array $messages = [
+        ['subject' => 'Christy', 'created' => '2023/08/31'],
+        ['subject' => 'Quincy', 'created' => '2023/08/29'],
+        ['subject' => 'Pascal', 'created' => '2022/09/29']
+    ];
 
     #[Route('/', name: 'app_hello_world')]
     public function helloWorld(): Response {
