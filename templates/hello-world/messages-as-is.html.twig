@@ -5,7 +5,7 @@
 {% block body %}
 <div>
     {% if message|length > 0 %}
-        {% for msg in message %}
+        {% for msg in message|slice(0, limit) %}
             <p>{{ msg }}</p>
         {% endfor %}
     {% else %}

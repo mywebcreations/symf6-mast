@@ -46,12 +46,13 @@ class HelloWorldController extends AbstractController
         // return new Response($this->messages[$id]);
     }
 
-    #[Route('/messages-as-is', name: 'app_messages_as_is')]
-    public function messagesAsIs(): Response {
+    #[Route('/messages-as-is/{index}', name: 'app_messages_as_is')]
+    public function messagesAsIs($index): Response {
         return $this->render(
             'hello-world/messages-as-is.html.twig',
             [
-                'message' => $this->messages
+                'message' => $this->messages,
+                'limit'   => $index
             ]
         );
              
