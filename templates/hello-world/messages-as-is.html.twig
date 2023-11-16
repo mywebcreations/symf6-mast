@@ -4,8 +4,12 @@
 
 {% block body %}
 <div>
-    {% for msg in message %}
-        <p>{{ msg }}</p>
-    {% endfor %}
+    {% if message|length > 0 %}
+        {% for msg in message %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No value yet</p>
+    {% endif %}
 </div
 {% endblock %}
