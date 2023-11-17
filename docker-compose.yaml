@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mariadb:10.8.3
+    #platform: linux/arm64/v8  # Uncomment when on Mac M1
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always #restart container if it stops
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"  # Map host port to container port (host:container)
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"  # Map host port to container port
