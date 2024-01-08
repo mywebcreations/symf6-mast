@@ -14,7 +14,7 @@ final class Version20240108091132 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Create micro_post table';
     }
 
     public function up(Schema $schema): void
