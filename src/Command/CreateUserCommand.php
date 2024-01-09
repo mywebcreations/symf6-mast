@@ -24,8 +24,9 @@ class CreateUserCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
-            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
+            ->addArgument('email', InputArgument::REQUIRED, 'User email')
+            ->addArgument('password', InputArgument::REQUIRED, 'User password')
+            // ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
         ;
     }
 
