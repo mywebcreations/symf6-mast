@@ -33,15 +33,20 @@ class CreateUserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $arg1 = $input->getArgument('arg1');
+        $email = $input->getArgument('email');
+        $password = $input->getArgument(('password'));
 
-        if ($arg1) {
-            $io->note(sprintf('You passed an argument: %s', $arg1));
+        if ($email) {
+            $io->note(sprintf('You passed an argument: %s', $email));
+        }
+        
+        if ($password) {
+            $io->note(sprintf('You passed an argument: %s', $password));
         }
 
-        if ($input->getOption('option1')) {
-            // ...
-        }
+        // if ($input->getOption('option1')) {
+        //     // ...
+        // }
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
 
