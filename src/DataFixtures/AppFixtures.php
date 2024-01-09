@@ -35,5 +35,22 @@ class AppFixtures extends Fixture
         // $microPost3->setText('France is a delightful country to visit. We are also praying for it.');
         // $microPost3->setCreated(new DateTime());
         // $manager->persist($microPost3);
+
+        $user1 = new User();
+        $user1->setEmail("mywebcreativities@gmail.com");
+        $user1->setPassword(
+            $this->userPasswordHasher->hashPassword($user1, 'abcdefgh')
+        );
+        
+        $user2 = new User();
+        $user2->setEmail("sweethoneyking@gmail.com");
+        $user2->setPassword(
+            $this->userPasswordHasher->hashPassword($user2, 'abcdefgh')
+        );
+
+        $manager->persist($user1);
+        $manager->persist($user2);
+
+        $manager->flush();
     }
 }
