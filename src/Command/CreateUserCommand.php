@@ -20,7 +20,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class CreateUserCommand extends Command
 {
     public function __construct(
-        private UserPasswordHasherInterface $userPasswordHasher
+        private UserPasswordHasherInterface $userPasswordHasher, 
+        private EntityManagerInterface $entityManager
     )
     {
         parent::__construct();
@@ -55,11 +56,14 @@ class CreateUserCommand extends Command
             $this->userPasswordHasher->hashPassword($user, $password)
         );
 
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+        
         // if ($input->getOption('option1')) {
         //     // ...
         // }
 
-        $io->success('');
+        $io->success( sprintf('User %s account was created successfully!', $email) );
 
         return Command::SUCCESS;
     }
