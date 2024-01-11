@@ -25,16 +25,18 @@ class MicroPostController extends AbstractController
         // $microPost->setText('The Netherlands is a fantastic country to visit. We are also praying for it.');
         // $microPost->setCreated(new \DateTime());
         
-        $microPost = $microPostRepo->find(1);
-        $microPost->setTitle("Hearty welcome to Belgium");        
+        // $microPost = $microPostRepo->find(1);
+        // $microPost->setTitle("Hearty welcome to Belgium");        
         
-        $em->persist($microPost);
-        $em->flush();
+        // $em->persist($microPost);
+        // $em->flush();
 
-        $this->addFlash('success', 'Update of MicroPost successfful');
+        // $this->addFlash('success', 'Update of MicroPost successfful');
 
         return $this->render('micro_post/index.html.twig', [
             'controller_name' => 'MicroPostController',
         ]);
     }
+
+
 }
