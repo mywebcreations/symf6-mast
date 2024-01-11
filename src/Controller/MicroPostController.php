@@ -18,7 +18,7 @@ class MicroPostController extends AbstractController
         MicroPostRepository $microPostRepo
     ): Response
     {
-        // dd($microPostRepo->findAll());
+        $posts = $microPostRepo->findAll();
         
         // $microPost = new MicroPost();
         // $microPost->setTitle('Welcome to Netherlands');
@@ -33,10 +33,21 @@ class MicroPostController extends AbstractController
 
         // $this->addFlash('success', 'Update of MicroPost successfful');
 
-        return $this->render('micro_post/index.html.twig', [
-            'controller_name' => 'MicroPostController',
-        ]);
+        return $this->render(
+            'micro_post/index.html.twig', [
+               'posts' => $posts
+            ]
+        );
     }
 
+    #[Route('/micro-post/{post}', name: 'app_micro_post_show')]
+    public function showOne(MicroPost $post): Response
+    {
+        return $this->render(
+            'micro_post/show-one.html.twig', [
+               'post' => $post
+            ]
+        );
+    }
 
 }
