@@ -12,42 +12,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MicroPostController extends AbstractController
 {
-    #[Route('/micro-post', name: 'app_micro_post')]
-    public function index(
-        EntityManagerInterface $em, 
-        MicroPostRepository $microPostRepo
-    ): Response
+    #[Route('/micro-post/create', name: 'app_micro_post_create')]
+    public function createPost(): Response
     {
-        $posts = $microPostRepo->findAll();
+        $microPost = new MicroPost();
+        $form = $this->createFormBuilder($microPost)
+            ->add('title')
+            ->add('text')
+            ->getForm();
         
-        // $microPost = new MicroPost();
-        // $microPost->setTitle('Welcome to Netherlands');
-        // $microPost->setText('The Netherlands is a fantastic country to visit. We are also praying for it.');
-        // $microPost->setCreated(new \DateTime());
-        
-        // $microPost = $microPostRepo->find(1);
-        // $microPost->setTitle("Hearty welcome to Belgium");        
-        
-        // $em->persist($microPost);
-        // $em->flush();
-
-        // $this->addFlash('success', 'Update of MicroPost successfful');
-
-        return $this->render(
-            'micro_post/index.html.twig', [
-               'posts' => $posts
-            ]
-        );
-    }
-
-    #[Route('/micro-post/{post}', name: 'app_micro_post_show')]
-    public function showOne(MicroPost $post): Response
-    {
-        return $this->render(
-            'micro_post/show-one.html.twig', [
-               'post' => $post
-            ]
-        );
+        return $this->render('micro_post/post.html.twig', [
+            'form' => $microPost,
+        ]);
     }
 
 }
