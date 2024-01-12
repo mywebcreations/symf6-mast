@@ -34,7 +34,7 @@ class MicroPostController extends AbstractController
         // $em->persist($microPost);
         // $em->flush();
 
-        // $this->addFlash('success', 'Update of MicroPost successfful');
+        // $this->addFlash('success', 'Update of MicroPost successful');
 
         return $this->render(
             'micro_post/index.html.twig', [
