@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\MicroPostRepository;
 use App\Entity\MicroPost;
+use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,7 +54,7 @@ class MicroPostController extends AbstractController
     }
 
     #[Route('/micro-post/create/new', name: 'app_micro_post_create_new')]
-    public function createPost(Request $request): Response
+    public function createPost(Request $request, EntityManagerInterface $entityManager): Response
     {
         $microPost = new MicroPost();
         $form = $this->createFormBuilder($microPost)
@@ -64,7 +65,10 @@ class MicroPostController extends AbstractController
         
         $form->handleRequest($request);
 
-
+        if ($form->isSubmitted() && $form->isValid()) {
+           
+       
+        }
         
         return $this->render('micro_post/create-post.html.twig', [
             'form' => $form->createView(), //or $form->createView()
