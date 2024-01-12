@@ -50,4 +50,18 @@ class MicroPostController extends AbstractController
         );
     }
 
+    #[Route('/micro-post/create', name: 'app_micro_post_create')]
+    public function createPost(): Response
+    {
+        $microPost = new MicroPost();
+        $form = $this->createFormBuilder($microPost)
+            ->add('title')
+            ->add('text')
+            ->getForm();
+        
+        return $this->render('micro_post/create-post.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
 }
