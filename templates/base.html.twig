@@ -11,6 +11,10 @@
         {% endblock %}
     </head>
     <body>
+        {% for message in app.flashes('success') %}
+            <div style="color: green; margin-bottom: 30px;">{{ message }}</div>        
+        {% endfor %}
+
         {% block body %}{% endblock %}
     </body>
 </html>

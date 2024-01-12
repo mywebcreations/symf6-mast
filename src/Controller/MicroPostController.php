@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Repository\MicroPostRepository;
 use App\Entity\MicroPost;
+use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MicroPostController extends AbstractController
@@ -32,7 +34,7 @@ class MicroPostController extends AbstractController
         // $em->persist($microPost);
         // $em->flush();
 
-        // $this->addFlash('success', 'Update of MicroPost successfful');
+        // $this->addFlash('success', 'Update of MicroPost successful');
 
         return $this->render(
             'micro_post/index.html.twig', [
@@ -52,7 +54,7 @@ class MicroPostController extends AbstractController
     }
 
     #[Route('/micro-post/create/new', name: 'app_micro_post_create_new')]
-    public function createPost(): Response
+    public function createPost(Request $request, EntityManagerInterface $entityManager): Response
     {
         $microPost = new MicroPost();
         $form = $this->createFormBuilder($microPost)
@@ -60,6 +62,28 @@ class MicroPostController extends AbstractController
             ->add('text')
             ->add('submit', SubmitType::class, ['label' => 'Submit'])
             ->getForm();
+        
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $microPost->setTitle($data->getTitle());
+            $microPost->setText($data->getText());
+            $microPost->setCreated(new DateTime());
+
+            $entityManager->persist($microPost);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Post created successfully'
+            );
+
+            return $this->redirectToRoute(
+                'app_micro_post',
+                []
+            );
+        }
         
         return $this->render('micro_post/create-post.html.twig', [
             'form' => $form->createView(), //or $form->createView()
