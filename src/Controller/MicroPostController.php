@@ -71,8 +71,8 @@ class MicroPostController extends AbstractController
             $microPost->setText($data->getText());
             $microPost->setCreated(new DateTime());
 
-
-       
+            $entityManager->persist($microPost);
+            $entityManager->flush();
         }
         
         return $this->render('micro_post/create-post.html.twig', [
