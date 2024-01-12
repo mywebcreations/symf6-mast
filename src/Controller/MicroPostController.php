@@ -73,6 +73,16 @@ class MicroPostController extends AbstractController
 
             $entityManager->persist($microPost);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Post created successfully'
+            );
+
+            return $this->redirectToRoute(
+                'app_micro_post',
+                []
+            );
         }
         
         return $this->render('micro_post/create-post.html.twig', [
