@@ -66,7 +66,12 @@ class MicroPostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-           
+            $data = $form->getData();
+            $microPost->setTitle($data->getTitle());
+            $microPost->setText($data->getText());
+            $microPost->setCreated(new DateTime());
+
+
        
         }
         
