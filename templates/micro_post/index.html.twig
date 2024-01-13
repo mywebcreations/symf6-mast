@@ -10,6 +10,9 @@
           <a href="{{ path('app_micro_post_show', {post: post.id}) }}">
             {{ post.title }}
           </a>
+          <a style="margin-left: 10px;" href="{{ path('app_micro_post_edit', {post: post.id}) }}">
+            <button type="button">edit</button>
+          </a>
         </div>
       {% endfor %}
     {% endif %}
