@@ -3,5 +3,22 @@
 {% block title %}Create New Post{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    {{ form_start(microPostForm) }}
+        <div>{{ form_errors(microPostForm) }}</div> <!--shows errors after form is submitted-->
+
+        <div>
+            {{ form_label(microPostForm.title, 'Please, enter the title') }}
+            {{ form_widget(microPostForm.title) }}
+        </div>
+        
+        <div>
+            {{ form_label(microPostForm.text, 'Please, enter the text') }}
+            {{ form_widget(microPostForm.text) }}
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+
+    {{ form_end(microPostForm) }}
 {% endblock %}

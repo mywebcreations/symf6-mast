@@ -60,7 +60,7 @@ class MicroPostController extends AbstractController
         $form = $this->createFormBuilder($microPost)
             ->add('title')
             ->add('text')
-            ->add('submit', SubmitType::class, ['label' => 'Submit'])
+            // ->add('submit', SubmitType::class, ['label' => 'Submit'])
             ->getForm();
         
         $form->handleRequest($request);
@@ -86,7 +86,7 @@ class MicroPostController extends AbstractController
         }
         
         return $this->render('micro_post/create-post.html.twig', [
-            'form' => $form->createView(), //or $form->createView()
+            'microPostForm' => $form, //or $form->createView()
         ]);
     }
 
