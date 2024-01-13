@@ -1,0 +1,16 @@
+{{ form_start(microPostForm) }}
+    <div>{{ form_errors(microPostForm) }}</div> <!--shows errors after form is submitted-->
+
+    <div>{{ form_label(microPostForm.title, 'Please, enter the title') }}</div>
+            
+    <div>{{ form_widget( microPostForm.title, { 'attr': { 'style': 'color: grey' } } ) }}</div>
+            
+    <div>{{ form_label(microPostForm.text, 'Please, enter the text') }}</div>
+         
+    <div>{{ form_widget(microPostForm.text) }}</div>
+    
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+{{ form_end(microPostForm) }}
