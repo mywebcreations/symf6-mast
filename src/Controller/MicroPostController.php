@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\MicroPostRepository;
 use App\Entity\MicroPost;
+use App\Form\MicroPostType;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -57,12 +58,14 @@ class MicroPostController extends AbstractController
     public function createPost(Request $request, EntityManagerInterface $entityManager): Response
     {
         $microPost = new MicroPost();
-        $form = $this->createFormBuilder($microPost)
-            ->add('title')
-            ->add('text')
-            // ->add('submit', SubmitType::class, ['label' => 'Submit'])
-            ->getForm();
+        // $form = $this->createFormBuilder($microPost)
+        //     ->add('title')
+        //     ->add('text')
+        //     // ->add('submit', SubmitType::class, ['label' => 'Submit'])
+        //     ->getForm();
         
+        $form = $this->createForm(MicroPostType::class, $microPost);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -95,11 +98,13 @@ class MicroPostController extends AbstractController
     {
         $microPost = $post;
         
-        $form = $this->createFormBuilder($microPost)
-            ->add('title')
-            ->add('text')
-            // ->add('submit', SubmitType::class, ['label' => 'Submit'])
-            ->getForm();
+        // $form = $this->createFormBuilder($microPost)
+        //     ->add('title')
+        //     ->add('text')
+        //     // ->add('submit', SubmitType::class, ['label' => 'Submit'])
+        //     ->getForm();
+
+        $form = $this->createForm(MicroPostType::class, $microPost);
         
         $form->handleRequest($request);
 
