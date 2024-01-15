@@ -12,7 +12,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="bg-gray-100 text-gray-800 m-10">
         {% for message in app.flashes('success') %}
             <div style="color: green; margin-bottom: 30px;">{{ message }}</div>        
         {% endfor %}
