@@ -4,15 +4,16 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# <link rel="stylesheet" href="../public/build/app.css"> #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {# {{ encore_entry_script_tags('app') }} #}
         {% endblock %}
     </head>
-    <body class="bg-gray-400 text-gray-800 m-10 dark:bg-gray-800 dark:text-white">
+    <body class="bg-gray-100 text-gray-800 m-10 dark:bg-gray-800 dark:text-white">
         <div class="w-full md:w-2/3 mx-auto mb-4 flex justify-between items-center">
             <div class="text-4xl">
                 <a href="{{ path('app_micro_post') }}">Home</a>
