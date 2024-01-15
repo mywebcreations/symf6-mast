@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -12,7 +12,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="bg-gray-100 text-gray-800 m-10">
+    <body class="bg-gray-100 text-gray-800 m-10 dark:bg-gray-800 dark:text-white">
         {% for message in app.flashes('success') %}
             <div style="color: green; margin-bottom: 30px;">{{ message }}</div>        
         {% endfor %}
