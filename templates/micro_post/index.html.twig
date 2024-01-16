@@ -11,9 +11,6 @@
               <a href="{{ path('app_micro_post_show', {post: post.id}) }}">
                 {{ post.title }}
               </a>
-              <a style="margin-left: 10px;" href="{{ path('app_micro_post_edit', {post: post.id}) }}">
-                <button type="button">edit</button>
-              </a>
             </div>
             <div class="text-xl dark:text-gray-400">
               {{ post.text }}
@@ -28,6 +25,11 @@
             </div>
             <div class="text-sm text-gray-500 dark:text-gray-400">
               <a href="#">user@email.com</a>
+            </div>
+            <div>
+                <a style="margin-left: 10px;" href="{{ path('app_micro_post_edit', {post: post.id}) }}">
+                  <button type="button">edit</button>
+                </a>
             </div>
         </div>
       {% endfor %}
