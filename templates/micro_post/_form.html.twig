@@ -5,22 +5,17 @@
 
     <div>
         {{ form_label(microPostForm.title, 'Please, enter the title', { 'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'} }) }}
+        {{ form_widget( microPostForm.title, { 'attr': { 'class': 'block w-full shadow-sm border border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md p-2 mt-1 mb-2' } } ) }}
+        {{ form_errors(microPostForm.title) }}
     </div>
-            
+
     <div>
-        {{ form_widget( microPostForm.title, { 'attr': { 'style': 'color: grey' } } ) }}
-    </div>
-            
-    <div>
-        {{ form_label(microPostForm.text, 'Please, enter the text') }}
+        {{ form_label(microPostForm.text, 'Please, enter the text', { 'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'} }) }}
+        {{ form_widget( microPostForm.text, { 'attr': { 'class': 'block w-full shadow-sm border border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md p-2 mt-1 mb-2' } } ) }}
+        {{ form_errors(microPostForm.text) }}
     </div>
          
     <div>
-        {{ form_widget(microPostForm.text) }}
-    </div>
-    
-
-    <div>
-        <button type="submit">Submit</button>
+        <button type="submit" class="block w-full shadow-sm border border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-md p-2 mt-4 mb-2">Submit</button>
     </div>
 {{ form_end(microPostForm) }}
