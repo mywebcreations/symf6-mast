@@ -16,7 +16,7 @@ class LoginController extends AbstractController
 
     }
     
-    #[Route('/login', name: 'app_login')]
+    #[Route('/login', name: 'app_micro_post_login')]
     public function index(): Response
     {
         $lastUsername = $this->authenticationUtils->getLastUsername();
