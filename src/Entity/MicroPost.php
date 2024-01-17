@@ -17,10 +17,22 @@ class MicroPost
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 5, 
+        max: 255, 
+        minMessage: 'Title must be 5 characters minimum', 
+        maxMessage: 'Title must not be more than 255 characters'
+    )]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
     #[Assert\NotBlank()]
+    #[Assert\Length(
+        min: 5, 
+        max: 500, 
+        minMessage: 'Title must be 5 characters minimum', 
+        maxMessage: 'Title must not be more than 500 characters'
+    )]
     private ?string $text = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
