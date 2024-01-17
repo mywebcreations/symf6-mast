@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <form action="{{ path('app_login') }}" method="POST">
+    <form action="{{ path('app_micro_post_login') }}" method="POST">
         <div>
             <label class="block text-sm text-gray-700 dark:text-gray-300 font-medium">Email</label>
             <input type="text" name="_username" value="{{ lastUsername }}" 
