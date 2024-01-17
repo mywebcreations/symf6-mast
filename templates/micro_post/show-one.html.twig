@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post - {{post.title}}{% endblock %}
+
+{% block bread %}
+ &rarr; Post
+{% endblock %}
+
+{% block body %}
+  {{ include('micro_post/_post.html.twig', { post: post }) }}
+{% endblock %}

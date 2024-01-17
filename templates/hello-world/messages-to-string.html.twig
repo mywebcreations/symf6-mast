@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Convert messages to string{% endblock %}
+
+{% block body %}
+
+    {# Using join filter to implode the array elements with a separator #}
+    {% for msg in message %}
+        {% set msgString = msg|join(', ') %}
+        {# Output the result string #}
+        {{ msgString }}
+    {% endfor %}
+
+{% endblock %}
