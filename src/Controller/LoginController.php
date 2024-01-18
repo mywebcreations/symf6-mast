@@ -27,4 +27,11 @@ class LoginController extends AbstractController
             'error'        => $error
         ]);
     }
+
+    #[Route('/logout', name: 'app_micro_post_logout')]
+    public function logout()
+    {
+        
+    }
+    
 }
