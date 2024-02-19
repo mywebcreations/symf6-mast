@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+// use Symfony\Component\Security\Core\Authorization\Attribute\IsGranted;
+// use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class MicroPostController extends AbstractController
 {
@@ -55,11 +57,12 @@ class MicroPostController extends AbstractController
     }
 
     #[Route('/micro-post/create/new', name: 'app_micro_post_create_new')]
+    // #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function createPost(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // $this->denyAccessUnlessGranted(
-        //     'PUBLIC_ACCESS'
-        // );
+        $this->denyAccessUnlessGranted(
+            'IS_AUTHENTICATED_FULLY'
+        );
         
         $microPost = new MicroPost();
         // $form = $this->createFormBuilder($microPost)
