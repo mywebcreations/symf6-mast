@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -29,6 +31,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: UserProfile::class, cascade: ['persist', 'remove'])]
     private ?UserProfile $userProfile = null;
+
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: MicroPost::class)]
+    private Collection $microPosts;
+
+    public function __construct()
+    {
+        $this->microPosts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -113,6 +123,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->userProfile = $userProfile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MicroPost>
+     */
+    public function getMicroPosts(): Collection
+    {
+        return $this->microPosts;
+    }
+
+    public function addMicroPost(MicroPost $microPost): static
+    {
+        if (!$this->microPosts->contains($microPost)) {
+            $this->microPosts->add($microPost);
+            $microPost->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMicroPost(MicroPost $microPost): static
+    {
+        if ($this->microPosts->removeElement($microPost)) {
+            // set the owning side to null (unless already changed)
+            if ($microPost->getAuthor() === $this) {
+                $microPost->setAuthor(null);
+            }
+        }
 
         return $this;
     }
